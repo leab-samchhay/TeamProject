@@ -69,14 +69,8 @@
                             <span class="menu-text">Sale</span>
                             <span class="menu-arrow"></span>
                         </a>
-                        {{-- <div class="collapse" id="sidebarHospital">
+                        <div class="collapse" id="sidebarHospital">
                             <ul class="sub-menu">
-                                <li class="side-nav-item">
-                                    <a href="{{ route('customer.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Customer</span>
-                                    </a>
-                                </li>
-
                                 <li class="side-nav-item">
                                     <a href="{{ route('employee.index') }}" class="side-nav-link">
                                         <span class="menu-text">Employee</span>
@@ -84,26 +78,20 @@
                                 </li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{ route('user.index') }}" class="side-nav-link">
-                                        <span class="menu-text">User</span>
-                                    </a>
-                                </li>
-
-                                <li class="side-nav-item">
-                                    <a href="{{ route('exchang.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Exchang</span>
-                                    </a>
-                                </li>
-
-                                <li class="side-nav-item">
-                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Sale</span>
+                                    <a href="{{ route('customer.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Customer</span>
                                     </a>
                                 </li>
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('category.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Category</span>
+                                        <span class="menu-text">category</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('exchange.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Exchange</span>
                                     </a>
                                 </li>
 
@@ -118,8 +106,10 @@
                                         <span class="menu-text">Product</span>
                                     </a>
                                 </li>
+
+
                             </ul>
-                        </div> --}}
+                        </div>
                     </li>
                 </ul>
 
@@ -722,7 +712,7 @@
             @yield('content')
 
             <!-- Footer Start -->
-            <footer class="footer">
+            {{-- <footer class="footer">
                 <div class="page-container">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start">
@@ -740,7 +730,7 @@
                         </div>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- end Footer -->
 
         </div>
