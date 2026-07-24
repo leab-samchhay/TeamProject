@@ -20,6 +20,7 @@
                                 <th class="ps-3" style="width: 60px;">
                                     No
                                 </th>
+                                <th style="width: 400px;" class="text-center">Currency</th>
                                 <th>Rate</th>
                                 <th>Date</th>
                                 <th>Status</th>
@@ -27,51 +28,51 @@
                             </tr>
                         </thead><!-- end thead -->
                         <tbody>
-                            @if ($rows)
-                                @foreach ($rows as $row )
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $row->rate }}</td>
-                                        <td>{{ $row->date}}</td>
-                                        <td>
-                                            @if($row->status == true)
-                                                <button class="btn btn-sm text-white bg-success">
-                                                    Active
+                            @forelse ($rows as $row)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td class="text-center">{{ $row->fromCurrency->currencycode ?? '-' }}   🔜  {{ $row->toCurrency->currencycode ?? '-' }}</td>
+                                    <td>{{ $row->rate }}</td>
+                                    <td>{{ $row->date }}</td>
+                                    <td>
+                                        @if($row->status == true)
+                                            <button class="btn btn-sm text-white bg-success">
+                                                Active
+                                            </button>
+                                        @else
+                                            <button class="btn btn-sm text-white bg-danger">
+                                                Inactive
+                                            </button>
+                                        @endif
+                                    </td>
+
+                                    <td class="pe-3">
+                                        <div class="hstack gap-1 justify-content-end">
+
+                                            <a href="{{ route('exchange.edit',$row->id) }}"
+                                                class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
+                                                    class="ti ti-edit fs-16"></i></a>
+
+                                            <form action="{{ route('exchange.remove', $row->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this exchange?')"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                    class="btn btn-soft-danger btn-icon btn-sm rounded-circle mt-0">
+                                                    <i class="ti ti-trash"></i>
                                                 </button>
-                                            @else
-                                                <button class="btn btn-sm text-white bg-danger">
-                                                    Inactive
-                                                </button>
-                                            @endif
-                                        </td>
+                                            </form>
 
-                                        <td class="pe-3">
-                                            <div class="hstack gap-1 justify-content-end">
-
-                                                <a href="{{ route('exchange.edit',$row->id) }}"
-                                                    class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
-                                                        class="ti ti-edit fs-16"></i></a>
-
-                                                <form action="{{ route('exchange.remove', $row->id) }}" method="POST"
-                                                    onsubmit="return confirm('Are you sure you want to delete this users?')"
-                                                    style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit"
-                                                        class="btn btn-soft-danger btn-icon btn-sm rounded-circle mt-0">
-                                                        <i class="ti ti-trash"></i>
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            @endif
-
-
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center py-4">No exchanges found.</td>
+                                </tr>
+                            @endforelse
                         </tbody><!-- end tbody -->
                     </table><!-- end table -->
                 </div>

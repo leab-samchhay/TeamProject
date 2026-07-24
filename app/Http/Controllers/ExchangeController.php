@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
 use App\Models\Exchange;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,8 @@ class ExchangeController extends Controller
      */
     public function index()
     {
-        $rows = Exchange::paginate(10);
-        return view('exchange.index',compact('rows'));
+        $rows = Exchange::with(['fromCurrency', 'toCurrency'])->paginate(10);
+        return view('exchange.index', compact('rows'));
     }
 
     /**
@@ -21,7 +22,8 @@ class ExchangeController extends Controller
      */
     public function create()
     {
-        return view('exchange.create');
+        $currencies = Currency::where('status', 1)->get();
+        return view('exchange.create', compact('currencies'));
     }
 
     /**
@@ -32,16 +34,20 @@ class ExchangeController extends Controller
         $validate = $request->validate([
             'rate' => 'required|numeric',
             'date' => 'required|date',
-            'status' => 'nullable|integer'
+            'status' => 'nullable|integer',
+            'from_currency_id' => 'required|integer|exists:currencies,id|different:to_currency_id',
+            'to_currency_id' => 'required|integer|exists:currencies,id',
         ]);
 
         Exchange::create([
             'rate' => $validate['rate'],
             'date' => $validate['date'],
             'status' => $validate['status'] ?? 1,
+            'from_currency_id' => $validate['from_currency_id'],
+            'to_currency_id' => $validate['to_currency_id'],
         ]);
 
-        return redirect()->route('exchange.index')->with('success');
+        return redirect()->route('exchange.index')->with('success', 'Exchange created successfully.');
     }
 
     /**
@@ -57,29 +63,35 @@ class ExchangeController extends Controller
      */
     public function edit(int $id)
     {
-        $exchange= Exchange::findOrFail($id);
-        return view('exchange.edit',compact('exchange'));
+        $exchange = Exchange::findOrFail($id);
+        $currencies = Currency::where('status', 1)->get();
+        return view('exchange.edit', compact('exchange', 'currencies'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,int $id)
+    public function update(Request $request, int $id)
     {
         $exchange = Exchange::findOrFail($id);
+
         $validate = $request->validate([
             'rate' => 'required|numeric',
             'date' => 'required|date',
-            'status' => 'nullable|integer'
+            'status' => 'nullable|integer',
+            'from_currency_id' => 'required|integer|exists:currencies,id|different:to_currency_id',
+            'to_currency_id' => 'required|integer|exists:currencies,id',
         ]);
 
         $exchange->update([
             'rate' => $validate['rate'],
             'date' => $validate['date'],
             'status' => $validate['status'] ?? 1,
+            'from_currency_id' => $validate['from_currency_id'],
+            'to_currency_id' => $validate['to_currency_id'],
         ]);
 
-        return redirect()->route('exchange.index')->with('success');
+        return redirect()->route('exchange.index')->with('success', 'Exchange updated successfully.');
     }
 
     /**
@@ -87,8 +99,8 @@ class ExchangeController extends Controller
      */
     public function destroy(int $id)
     {
-        $exchange = Exchange:: findOrFail($id);
+        $exchange = Exchange::findOrFail($id);
         $exchange->delete();
-        return redirect()->route('exchange.index')->with('success');
+        return redirect()->route('exchange.index')->with('success', 'Exchange deleted successfully.');
     }
 }

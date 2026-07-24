@@ -16,6 +16,10 @@ return new class extends Migration
             $table->decimal('rate', 18, 6)->nullable();
             $table->date('date')->nullable();
             $table->boolean('status')->default(true);
+
+            $table->foreignId('from_currency_id')->constrained('currencies', 'id')->onDelete('cascade');
+            $table->foreignId('to_currency_id')->constrained('currencies', 'id')->onDelete('cascade');
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExchangeController;
@@ -77,3 +78,10 @@ Route:: post('/unitype-store',[UnitypeController::class,'store'])->name('unitype
 Route:: get('/unitype-edit/{id}',[UnitypeController::class,'edit'])->name('unitype.edit');
 Route:: put('/unitype-update/{id}',[UnitypeController::class,'update'])->name('unitype.update');
 Route:: delete('/unitype-remove/{id}',[UnitypeController::class,'destroy'])->name('unitype.remove');
+
+Route:: get('/currency',[CurrencyController::class,'index'])->name('currency.index');
+Route:: get('/currency-create',[CurrencyController::class,'create'])->name('currency.create');
+Route:: post('/currency-store',[CurrencyController::class,'store'])->name('currency.store');
+Route:: get('/currency-edit/{id}',[CurrencyController::class,'edit'])->name('currency.edit');
+Route:: put('/currency-update/{id}',[CurrencyController::class,'update'])->name('currency.update');
+Route:: delete('/currency-remove/{id}',[CurrencyController::class,'destroy'])->name('currency.remove');
