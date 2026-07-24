@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Supplier;
+use App\Models\Unitype;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,11 +13,26 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rows = Product::with(['category', 'supplier'])->paginate(10);
-        return view('product.index', compact('rows'));
-    }
+        // $rows = Product::with(['category', 'supplier'])->paginate(10);
+        // return view('product.index', compact('rows'));
+
+        $query = Product::with(['category', 'supplier', 'unitype']);
+
+        if ($request->filled('search')) {
+            $query->where('ProName', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('CategoryID', $request->category_id); // adjust to your actual FK column name
+        }
+
+        $rows = $query->paginate(10);
+        $categories = Category::orderBy('name')->get();
+
+        return view('product.index', compact('rows', 'categories'));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +41,8 @@ class ProductController extends Controller
     {
         $categories = Category::where('status', 1)->get();
         $suppliers = Supplier::where('status', 1)->get();
-        return view('product.create', compact('categories', 'suppliers'));
+        $unitypes = Unitype::where('status', 1)->get();
+        return view('product.create', compact('categories', 'suppliers','unitypes'));
     }
 
     /**
@@ -40,11 +57,14 @@ class ProductController extends Controller
             'Qty_Onhand'  => 'nullable|integer|min:0',
             'Qty_Alert'   => 'nullable|integer|min:0',
             'Remark'      => 'nullable|string|max:200',
+            'ReleaseDate' => 'nullable|date',
+            'ExpiredDate' => 'nullable|date',
             'Photo'       => 'nullable|image|max:2048',
             'StockType'   => 'nullable|string|max:200',
             'Status'      => 'nullable|integer',
             'CategoryID'  => 'required|exists:categories,id',
             'SupplierID'  => 'required|exists:suppliers,id',
+            'UnitypeID'  => 'required|exists:unitypes,id',
         ]);
 
         if ($request->hasFile('Photo')) {
@@ -58,11 +78,14 @@ class ProductController extends Controller
             'Qty_Onhand' => $validate['Qty_Onhand'] ?? 0,
             'Qty_Alert'  => $validate['Qty_Alert'] ?? 0,
             'Remark'     => $validate['Remark'] ?? null,
+            'ReleaseDate'=> $validate['ReleaseDate'] ?? null,
+            'ExpiredDate'=> $validate['ExpiredDate'] ?? null,
             'Photo'      => $validate['Photo'] ?? null,
             'StockType'  => $validate['StockType'] ?? null,
             'Status'     => $validate['Status'] ?? 1,
             'CategoryID' => $validate['CategoryID'],
             'SupplierID' => $validate['SupplierID'],
+            'UnitypeID' => $validate['UnitypeID'],
         ]);
 
         return redirect()->route('product.index')->with('success');
@@ -84,7 +107,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $categories = Category::where('status', 1)->get();
         $suppliers = Supplier::where('status', 1)->get();
-        return view('product.edit', compact('product', 'categories', 'suppliers'));
+        $unitypes = Unitype::where('status', 1)->get();
+        return view('product.edit', compact('product', 'categories', 'suppliers','unitypes'));
     }
 
     /**
@@ -101,11 +125,15 @@ class ProductController extends Controller
             'Qty_Onhand'  => 'nullable|integer|min:0',
             'Qty_Alert'   => 'nullable|integer|min:0',
             'Remark'      => 'nullable|string|max:200',
+            'ReleaseDate' => 'nullable|date',
+            'ExpiredDate' => 'nullable|date',
             'Photo'       => 'nullable|image|max:2048',
             'StockType'   => 'nullable|string|max:200',
             'Status'      => 'nullable|integer',
             'CategoryID'  => 'required|exists:categories,id',
             'SupplierID'  => 'required|exists:suppliers,id',
+            'UnitypeID'  => 'required|exists:unitypes,id',
+
         ]);
 
         if ($request->hasFile('Photo')) {
@@ -121,11 +149,15 @@ class ProductController extends Controller
             'Qty_Onhand' => $validate['Qty_Onhand'] ?? 0,
             'Qty_Alert'  => $validate['Qty_Alert'] ?? 0,
             'Remark'     => $validate['Remark'] ?? null,
+            'ReleaseDate'=> $validate['ReleaseDate'] ?? null,
+            'ExpiredDate'=> $validate['ExpiredDate'] ?? null,
             'Photo'      => $validate['Photo'] ?? $product->Photo,
             'StockType'  => $validate['StockType'] ?? null,
             'Status'     => $validate['Status'] ?? 1,
             'CategoryID' => $validate['CategoryID'],
             'SupplierID' => $validate['SupplierID'],
+            'UnitypeID' => $validate['UnitypeID'],
+
         ]);
 
         return redirect()->route('product.index')->with('success');

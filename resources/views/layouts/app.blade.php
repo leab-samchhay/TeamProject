@@ -11,6 +11,10 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Battambang&display=swap" rel="stylesheet">
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -25,6 +29,13 @@
 
     <!-- Icons css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <style>
+        body {
+            font-family: 'Khmer OS Battambang', system-ui, -apple-system, sans-serif;
+            font-size: 15px
+        }
+    </style>
 </head>
 
 <body>
@@ -104,6 +115,18 @@
                                 <li class="side-nav-item">
                                     <a href="{{ route('product.index') }}" class="side-nav-link">
                                         <span class="menu-text">Product</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('role.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Roles</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('unitype.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Unitype</span>
                                     </a>
                                 </li>
 

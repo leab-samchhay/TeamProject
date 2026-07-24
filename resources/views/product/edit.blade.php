@@ -73,21 +73,6 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Stock Type
-                                    </label>
-
-                                    <input type="text"
-                                        name="StockType"
-                                        class="form-control"
-                                        value="{{ old('StockType', $product->StockType) }}">
-
-                                    @error('StockType')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label fw-semibold">
                                         Category <span class="text-danger">*</span>
                                     </label>
 
@@ -128,6 +113,26 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
+                                        Unitype <span class="text-danger">*</span>
+                                    </label>
+
+                                    <select name="UnitypeID" class="form-select">
+                                        <option value="">Select Unitype </option>
+                                        @foreach ($unitypes as $unitype)
+                                            <option value="{{ $unitype->id }}"
+                                                {{ old('UnitypeID',$product->UnitypeID) == $unitype->id ? 'selected' : '' }}>
+                                                {{ $unitype->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('SupplierID')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
                                         Qty Onhand
                                     </label>
 
@@ -152,6 +157,36 @@
                                         value="{{ old('Qty_Alert', $product->Qty_Alert) }}">
 
                                     @error('Qty_Alert')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                       Release Date
+                                    </label>
+
+                                    <input type="date"
+                                        name="ReleaseDate"
+                                        class="form-control"
+                                        value="{{ old('ReleaseDate', $product->ReleaseDate ? \Carbon\Carbon::parse($product->ReleaseDate)->format('Y-m-d') : '') }}">
+
+                                    @error('ReleaseDate')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        Expired Date
+                                    </label>
+
+                                    <input type="date"
+                                        name="ExpiredDate"
+                                        class="form-control"
+                                        value="{{ old('ExpiredDate', $product->ExpiredDate ? \Carbon\Carbon::parse($product->ExpiredDate)->format('Y-m-d') : '') }}">
+
+                                    @error('ExpiredDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>

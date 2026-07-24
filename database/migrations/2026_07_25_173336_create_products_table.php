@@ -19,12 +19,14 @@ return new class extends Migration
             $table->integer('Qty_Onhand')->default(0);
             $table->integer('Qty_Alert')->default(0);
             $table->string('Remark', 200)->nullable();
-            $table->string('Photo')->nullable(); // path រូបភាព
-            $table->string('StockType', 200)->nullable();
+            $table->string('Photo')->nullable();
+            $table->date('ReleaseDate')->nullable();
+            $table->date('ExpiredDate')->nullable();
             $table->boolean('Status')->default(true);
 
             $table->foreignId('CategoryID')->constrained('categories', 'id')->onDelete('cascade');
             $table->foreignId('SupplierID')->constrained('suppliers', 'id')->onDelete('cascade');
+            $table->foreignId('UnitypeID')->constrained('unitypes', 'id')->onDelete('cascade');
 
             $table->softDeletes();
             $table->timestamps();

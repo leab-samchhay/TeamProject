@@ -1,11 +1,13 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UnitypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -61,3 +63,17 @@ Route:: post('/product-store',[ProductController::class,'store'])->name('product
 Route:: get('/product-edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route:: put('/product-update/{id}',[ProductController::class,'update'])->name('product.update');
 Route:: delete('/product-remove/{id}',[ProductController::class,'destroy'])->name('product.remove');
+
+Route:: get('/role',[RoleController::class,'index'])->name('role.index');
+Route:: get('/role-create',[RoleController::class,'create'])->name('role.create');
+Route:: post('/role-store',[RoleController::class,'store'])->name('role.store');
+Route:: get('/role-edit/{id}',[RoleController::class,'edit'])->name('role.edit');
+Route:: put('/role-update/{id}',[RoleController::class,'update'])->name('role.update');
+Route:: delete('/role-remove/{id}',[RoleController::class,'destroy'])->name('role.remove');
+
+Route:: get('/unitype',[UnitypeController::class,'index'])->name('unitype.index');
+Route:: get('/unitype-create',[UnitypeController::class,'create'])->name('unitype.create');
+Route:: post('/unitype-store',[UnitypeController::class,'store'])->name('unitype.store');
+Route:: get('/unitype-edit/{id}',[UnitypeController::class,'edit'])->name('unitype.edit');
+Route:: put('/unitype-update/{id}',[UnitypeController::class,'update'])->name('unitype.update');
+Route:: delete('/unitype-remove/{id}',[UnitypeController::class,'destroy'])->name('unitype.remove');

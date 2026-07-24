@@ -10,7 +10,7 @@ class Product extends Model
     use SoftDeletes;
     protected $table = 'products';
     protected $fillable = ['ProName', 'ProNameKh', 'Barcode', 'Qty_Onhand',
-        'Qty_Alert', 'Remark', 'Photo', 'StockType','Status', 'CategoryID', 'SupplierID'
+        'Qty_Alert', 'Remark','ReleaseDate','ExpiredDate', 'Photo','Status', 'CategoryID', 'SupplierID','UnitypeID'
     ];
 
     public function category()
@@ -21,5 +21,10 @@ class Product extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'SupplierID', 'id');
+    }
+
+    public function unitype()
+    {
+        return $this->belongsTo(Unitype::class, 'UnitypeID', 'id');
     }
 }
