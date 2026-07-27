@@ -88,7 +88,7 @@
                                     <input type="date"
                                         name="date"
                                         class="form-control"
-                                        value="{{ old('date') }}">
+                                        value="{{ old('date', now()->format('Y-m-d')) }}">
 
                                     @error('date')
                                         <small class="text-danger">{{ $message }}</small>

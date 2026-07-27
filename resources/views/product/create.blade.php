@@ -138,7 +138,7 @@
                                     <input type="number"
                                         name="Qty_Onhand"
                                         class="form-control"
-                                        value="{{ old('Qty_Onhand', 0) }}">
+                                        value="{{ old('Qty_Onhand') }}">
 
                                     @error('Qty_Onhand')
                                         <small class="text-danger">{{ $message }}</small>
@@ -153,9 +153,24 @@
                                     <input type="number"
                                         name="Qty_Alert"
                                         class="form-control"
-                                        value="{{ old('Qty_Alert', 0) }}">
+                                        value="{{ old('Qty_Alert') }}">
 
                                     @error('Qty_Alert')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        Price
+                                    </label>
+
+                                    <input type="text"
+                                        name="price"
+                                        class="form-control"
+                                        value="{{ old('price') }}">
+
+                                    @error('price')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -215,14 +230,14 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 col-md-6">
                                     <label class="form-label fw-semibold">
                                         Remark
                                     </label>
 
                                     <textarea name="Remark"
                                         class="form-control"
-                                        rows="3">{{ old('Remark') }}</textarea>
+                                        rows="1">{{ old('Remark') }}</textarea>
 
                                     @error('Remark')
                                         <small class="text-danger">{{ $message }}</small>

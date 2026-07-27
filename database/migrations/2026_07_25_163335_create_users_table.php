@@ -18,6 +18,13 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->foreignId('permission_id')->nullable()->constrained('permissions', 'id')->onDelete('cascade');
+            $table->foreignId('role_id')->nullable()->constrained('roles', 'id')->onDelete('cascade');
+
+            $table->date('expired')->nullable();
+            $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
 

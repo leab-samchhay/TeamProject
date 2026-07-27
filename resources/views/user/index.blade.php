@@ -1,0 +1,96 @@
+@extends('layouts.app')
+
+@section('title', 'User')
+
+@section('content')
+    <div class="row my-2">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-header d-flex align-items-center justify-content-between border-bottom border-light">
+                    <h4 class="header-title">Manage User</h4>
+
+                    <div>
+                        <a href="{{ route('user.create') }}" class="btn btn-success bg-gradient">
+                            <i class="ti ti-plus me-1"></i> Add User
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table table-nowrap mb-0" style="table-layout: fixed;">
+
+                        <thead class="bg-light-subtle">
+
+                            <tr>
+                                <th class="ps-3 text-center" style="width:60px;"> No </th>
+                                <th> User Name </th>
+                                <th> Email </th>
+                                <th> Password </th>
+                                <th> Role  </th>
+                                <th> Permision </th>
+                                <th> Expired </th>
+                                <th class="text-center" style="width:125px;"> Status </th>
+                                <th class="text-center" style="width:125px;"> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($rows)
+                                @foreach ($rows as $row)
+                                    <tr>
+                                        <td class="text-center">
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->email }} </td>
+                                        <td>{{ \Illuminate\Support\Str::limit($row->password, 8, '...') }}</td>
+                                        <td>{{ $row->role->name ?? '-' }} </td>
+                                        <td>{{ $row->permission->permistionName ?? '-' }} </td>
+                                        <td>{{ $row->expired }} </td>
+                                        <td class="text-center">
+                                            @if($row->status == true)
+                                                <button class="btn btn-sm text-white bg-success">
+                                                    Active
+                                                </button>
+                                            @else
+                                                <button class="btn btn-sm text-white bg-danger">
+                                                    Inactive
+                                                </button>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="hstack gap-1 justify-content-center">
+                                                <a href="{{ route('user.edit',$row->id) }}"
+                                                    class="btn btn-soft-success btn-icon btn-sm rounded-circle">
+                                                    <i class="ti ti-edit fs-16"></i>
+                                                </a>
+                                                <form action="{{ route('user.remove', $row->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Are you sure you want to delete this role?')"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-soft-danger btn-icon btn-sm rounded-circle">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end gap-5 align-items-center justify-conten-center">
+                        {{ $rows->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

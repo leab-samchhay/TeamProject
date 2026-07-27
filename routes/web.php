@@ -5,10 +5,15 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExchangeController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\InvoiceDetailController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitypeController;
+use App\Http\Controllers\UserController;
+use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,3 +90,31 @@ Route:: post('/currency-store',[CurrencyController::class,'store'])->name('curre
 Route:: get('/currency-edit/{id}',[CurrencyController::class,'edit'])->name('currency.edit');
 Route:: put('/currency-update/{id}',[CurrencyController::class,'update'])->name('currency.update');
 Route:: delete('/currency-remove/{id}',[CurrencyController::class,'destroy'])->name('currency.remove');
+
+Route:: get('/permision',[PermissionController::class,'index'])->name('permision.index');
+Route:: get('/permision-create',[PermissionController::class,'create'])->name('permision.create');
+Route:: post('/permision-store',[PermissionController::class,'store'])->name('permision.store');
+Route:: get('/permision-edit/{id}',[PermissionController::class,'edit'])->name('permision.edit');
+Route:: put('/permision-update/{id}',[PermissionController::class,'update'])->name('permision.update');
+Route:: delete('/permision-remove/{id}',[PermissionController::class,'destroy'])->name('permision.remove');
+
+Route:: get('/user',[UserController::class,'index'])->name('user.index');
+Route:: get('/user-create',[UserController::class,'create'])->name('user.create');
+Route:: post('/user-store',[UserController::class,'store'])->name('user.store');
+Route:: get('/user-edit/{id}',[UserController::class,'edit'])->name('user.edit');
+Route:: put('/user-update/{id}',[UserController::class,'update'])->name('user.update');
+Route:: delete('/user-remove/{id}',[UserController::class,'destroy'])->name('user.remove');
+
+Route:: get('/invoice',[InvoiceController::class,'index'])->name('invoice.index');
+Route:: get('/invoice-create',[InvoiceController::class,'create'])->name('invoice.create');
+Route:: post('/invoice-store',[InvoiceController::class,'store'])->name('invoice.store');
+Route:: get('/invoice-edit/{id}',[InvoiceController::class,'edit'])->name('invoice.edit');
+Route:: put('/invoice-update/{id}',[InvoiceController::class,'update'])->name('invoice.update');
+Route:: delete('/invoice-remove/{id}',[InvoiceController::class,'destroy'])->name('invoice.remove');
+
+Route:: get('/invoiceDetail',[InvoiceDetailController::class,'index'])->name('invoiceDetail.index');
+Route:: get('/invoiceDetail-create',[InvoiceDetailController::class,'create'])->name('invoiceDetail.create');
+Route:: post('/invoiceDetail-store',[InvoiceDetailController::class,'store'])->name('invoiceDetail.store');
+Route:: get('/invoiceDetail-edit/{id}',[InvoiceDetailController::class,'edit'])->name('invoiceDetail.edit');
+Route:: put('/invoiceDetail-update/{id}',[InvoiceDetailController::class,'update'])->name('invoiceDetail.update');
+Route:: delete('/invoiceDetail-remove/{id}',[InvoiceDetailController::class,'destroy'])->name('invoiceDetail.remove');

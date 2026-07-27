@@ -197,6 +197,7 @@
                                 <th>Unitype</th>
                                 <th class="text-center">Qty Onhand</th>
                                 <th class="text-center">Qty Alert</th>
+                                <th class="text-center">Price</th>
                                 <th>Status</th>
                                 <th class="text-center" style="width: 125px;">Action</th>
                             </tr>
@@ -231,6 +232,7 @@
                                             @endif
                                         </td>
                                         <td class="text-center">{{ $row->Qty_Alert }}</td>
+                                        <td class="text-center">{{ $row->price }}</td>
                                         <td>
                                             @if($row->Status == true)
                                                 <button class="btn btn-sm text-white bg-success">Active</button>

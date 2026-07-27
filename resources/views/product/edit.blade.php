@@ -163,6 +163,21 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
+                                        Price
+                                    </label>
+
+                                    <input type="text"
+                                        name="price"
+                                        class="form-control"
+                                        value="{{ old('price',$product->price) }}">
+
+                                    @error('price')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
                                        Release Date
                                     </label>
 

@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('ProName', 200);
             $table->string('ProNameKh', 200)->nullable();
             $table->string('Barcode', 100)->unique()->nullable();
-            $table->integer('Qty_Onhand')->default(0);
-            $table->integer('Qty_Alert')->default(0);
+            $table->integer('Qty_Onhand')->nullable();
+            $table->integer('Qty_Alert')->nullable();
+            $table->decimal('price',18,6);
             $table->string('Remark', 200)->nullable();
             $table->string('Photo')->nullable();
             $table->date('ReleaseDate')->nullable();

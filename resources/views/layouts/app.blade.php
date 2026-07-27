@@ -82,11 +82,11 @@
                         </a>
                         <div class="collapse" id="sidebarHospital">
                             <ul class="sub-menu">
-                                <li class="side-nav-item">
+                                {{-- <li class="side-nav-item">
                                     <a href="{{ route('employee.index') }}" class="side-nav-link">
                                         <span class="menu-text">Employee</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('customer.index') }}" class="side-nav-link">
@@ -96,7 +96,7 @@
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('category.index') }}" class="side-nav-link">
-                                        <span class="menu-text">category</span>
+                                        <span class="menu-text">Category</span>
                                     </a>
                                 </li>
 
@@ -133,6 +133,30 @@
                                 <li class="side-nav-item">
                                     <a href="{{ route('currency.index') }}" class="side-nav-link">
                                         <span class="menu-text">Currency</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('permision.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Permistion</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('user.index') }}" class="side-nav-link">
+                                        <span class="menu-text">User</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('invoice.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Invoice</span>
+                                    </a>
+                                </li>
+
+                              <li class="side-nav-item">
+                                    <a href="{{ route('invoiceDetail.index') }}" class="side-nav-link">
+                                        <span class="menu-text">InvoiceDetail</span>
                                     </a>
                                 </li>
 
