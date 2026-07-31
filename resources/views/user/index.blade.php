@@ -30,7 +30,7 @@
                                 <th> Email </th>
                                 <th> Password </th>
                                 <th> Role  </th>
-                                <th> Permision </th>
+                                <th> Permission </th>
                                 <th> Expired </th>
                                 <th class="text-center" style="width:125px;"> Status </th>
                                 <th class="text-center" style="width:125px;"> Action </th>
@@ -94,3 +94,4 @@
         </div>
     </div>
 @endsection
+
