@@ -27,19 +27,19 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        PuchaseID <span class="text-danger">*</span>
+                                        purchaseID <span class="text-danger">*</span>
                                     </label>
 
-                                    <select name="puchaseID" class="form-select">
-                                        <option value="">Select PuchaseID </option>
-                                        @foreach ($puchase as $puchas)
-                                            <option value="{{ $puchas->id }}" @selected(old('puchaseId') == $puchas->id)>
+                                    <select name="purchaseID" class="form-select">
+                                        <option value="">Select purchaseID </option>
+                                        @foreach ($purchase as $puchas)
+                                            <option value="{{ $puchas->id }}" @selected(old('purchaseId') == $puchas->id)>
                                                 {{ $puchas->billno }}
                                             </option>
                                         @endforeach
                                     </select>
 
-                                    @error('puchaseID')
+                                    @error('purchaseID')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -101,11 +101,11 @@
                                     </label>
 
                                     <input type="number"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound') }}">
+                                        value="{{ old('discount') }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -134,3 +134,4 @@
         </div>
     </div>
 @endsection
+
