@@ -13,7 +13,7 @@ class PermissionController extends Controller
     public function index()
     {
         $rows = Permission::paginate(10);
-        return view('permision.index',compact('rows'));
+        return view('permission.index',compact('rows'));
     }
 
     /**
@@ -21,7 +21,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permision.create');
+        return view('permission.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class PermissionController extends Controller
             'status' => $validate['status'] ?? 1 ,
         ]);
 
-        return redirect()->route('permision.index')->with('success');
+        return redirect()->route('permission.index')->with('success');
     }
 
     /**
@@ -58,7 +58,7 @@ class PermissionController extends Controller
     public function edit(int $id)
     {
         $permission= Permission::findOrFail($id);
-        return view('permision.edit',compact('permission'));
+        return view('permission.edit',compact('permission'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PermissionController extends Controller
             'status' => $validate['status'] ?? 1 ,
         ]);
 
-        return redirect()->route('permision.index')->with('success');
+        return redirect()->route('permission.index')->with('success');
     }
 
     /**
@@ -90,6 +90,6 @@ class PermissionController extends Controller
     {
         $permission = Permission:: findOrFail($id);
         $permission->delete();
-        return redirect()->route('permision.index')->with('success');
+        return redirect()->route('permission.index')->with('success');
     }
 }
