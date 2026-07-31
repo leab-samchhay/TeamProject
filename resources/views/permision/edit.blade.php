@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Update Permision')
+@section('title', 'Update Permission')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -11,7 +11,7 @@
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h4 class="mb-0">
                             <i class="ti ti-box me-2"></i>
-                            Update Permision
+                            Update Permission
                         </h4>
 
                         <a href="{{ route('permision.index') }}" class="btn btn-light btn-sm">
@@ -21,37 +21,37 @@
 
                     <div class="card-body p-4">
 
-                        <form action="{{ route('permision.update', $permision->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('permision.update', $permission->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision Name <span class="text-danger">*</span>
+                                        Permission Name <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="text"
-                                        name="permistionName"
+                                        name="permissionName"
                                         class="form-control"
-                                        value="{{ old('permistionName', $permision->permistionName) }}">
+                                        value="{{ old('permissionName', $permission->permissionName) }}">
 
-                                    @error('permistionName')
+                                    @error('permissionName')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision Date <span class="text-danger">*</span>
+                                        Permission Date <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="date"
-                                        name="permistionDate"
+                                        name="permissionDate"
                                         class="form-control"
-                                        value="{{ old('permistionDate', $permision->permistionDate) }}">
+                                        value="{{ old('permissionDate', $permission->permissionDate ? \Carbon\Carbon::parse($permission->permissionDate)->format('Y-m-d') : '') }}">
 
-                                    @error('permistionDate')
+                                    @error('permissionDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -61,11 +61,9 @@
                                         Status
                                     </label>
 
-                                    <select name="Status" class="form-select">
-                                        <select name="status" class="form-select">
-                                        <option value="1" {{ old('active',$permision->active) == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ old('active',$permision->active) == 0 ? 'selected' : '' }}>Inactive</option>
-                                    </select>
+                                    <select name="status" class="form-select">
+                                        <option value="1" {{ old('status', $permission->status) == 1 ? 'selected' : '' }}>Active</option>
+                                        <option value="0" {{ old('status', $permission->status) == 0 ? 'selected' : '' }}>Inactive</option>
                                     </select>
                                 </div>
 
@@ -80,7 +78,7 @@
 
                                 <button type="submit" class="btn btn-primary">
                                     <i class="ti ti-device-floppy me-1"></i>
-                                    Update Permision
+                                    Update Permission
                                 </button>
 
                             </div>
