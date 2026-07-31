@@ -11,7 +11,7 @@ class Purchase extends Model
     protected $table = 'puchases';
 
     protected $fillable = [
-        'buillno', 'puchaseDate', 'discound', 'totalAmount', 'status',
+        'billno', 'puchaseDate', 'discound', 'totalAmount', 'status',
         'supplierId', 'userId',
     ];
 
@@ -27,6 +27,6 @@ class Purchase extends Model
 
     public function purchasePayments()
     {
-        return $this->hasMany(PurchasePayment::class, 'PurchaseID');
+        return $this->hasMany(PuchasePayment::class, 'PuchaseID');
     }
 }
