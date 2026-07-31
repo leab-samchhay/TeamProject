@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Permision')
+@section('title', 'Create Permission')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -11,7 +11,7 @@
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h4 class="mb-0">
                             <i class="ti ti-box me-2"></i>
-                            Create New Permision
+                            Create New Permission
                         </h4>
 
                         <a href="{{ route('permision.index') }}" class="btn btn-light btn-sm">
@@ -27,30 +27,30 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision Name <span class="text-danger">*</span>
+                                        Permission Name <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="text"
-                                        name="permistionName"
+                                        name="permissionName"
                                         class="form-control"
-                                        value="{{ old('permistionName') }}">
+                                        value="{{ old('permissionName') }}">
 
-                                    @error('permistionName')
+                                    @error('permissionName')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision Date <span class="text-danger">*</span>
+                                        Permission Date <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="date"
-                                        name="permistionDate"
+                                        name="permissionDate"
                                         class="form-control"
-                                        value="{{ old('permistionDate') }}">
+                                        value="{{ old('permissionDate') }}">
 
-                                    @error('permistionDate')
+                                    @error('permissionDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -77,7 +77,7 @@
 
                                 <button type="submit" class="btn btn-primary">
                                     <i class="ti ti-device-floppy me-1"></i>
-                                    Save Permision
+                                    Save Permission
                                 </button>
 
                             </div>
