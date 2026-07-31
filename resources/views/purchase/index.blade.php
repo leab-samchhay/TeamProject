@@ -36,11 +36,11 @@
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $row->billno }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($row->puchaseDate)->format('d M Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($row->purchaseDate)->format('d M Y') }}</td>
                                         <td>{{ $row->supplier->name ?? '-' }}</td>
                                         <td>{{ $row->user->name ?? '-' }}</td>
                                         <td>{{ number_format($row->totalAmount, 2) }}</td>
-                                        <td>{{ number_format($row->discound, 2) }}</td>
+                                        <td>{{ number_format($row->discount, 2) }}</td>
                                         <td>
                                             @if($row->status == true)
                                                 <button class="btn btn-sm text-white bg-success">
@@ -92,3 +92,4 @@
         </div>
     </div>
 @endsection
+
