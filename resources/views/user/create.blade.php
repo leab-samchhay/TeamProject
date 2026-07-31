@@ -132,8 +132,8 @@
                                     </label>
 
                                     <select name="Status" class="form-select">
-                                        <option value="1" {{ old('Status', $user->status) == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ old('Status', $user->status) == 0 ? 'selected' : '' }}>Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
 
