@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Purchase extends Model
 {
     use SoftDeletes;
-    protected $table = 'puchases';
+    protected $table = 'purchases';
 
     protected $fillable = [
-        'billno', 'puchaseDate', 'discound', 'totalAmount', 'status',
+        'billno', 'purchaseDate', 'discount', 'totalAmount', 'status',
         'supplierId', 'userId',
     ];
 
@@ -27,6 +27,6 @@ class Purchase extends Model
 
     public function purchasePayments()
     {
-        return $this->hasMany(PuchasePayment::class, 'PuchaseID');
+        return $this->hasMany(PurchasePayment::class, 'PurchaseID');
     }
 }
