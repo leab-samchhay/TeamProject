@@ -43,7 +43,7 @@ class InvoiceDetailController extends Controller
             'price'     => 'required|decimal:2',
             'cost'      => 'required|decimal:2',
             'totalPay'  => 'required|decimal:2',
-            'discound'  => 'required|integer'
+            'discount'  => 'required|integer'
 
         ]);
 
@@ -84,7 +84,7 @@ class InvoiceDetailController extends Controller
             'price'     => 'required|decimal:2',
             'cost'      => 'required|decimal:2',
             'totalPay'  => 'required|decimal:6',
-            'discound'  => 'required|integer'
+            'discount'  => 'required|integer'
 
         ]);
 
