@@ -21,26 +21,26 @@
 
                     <div class="card-body p-4">
 
-                        <form action="{{ route('purchaseDetail.update',$puchaseDetail->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('purchaseDetail.update',$purchaseDetail->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                            <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        PuchaseID <span class="text-danger">*</span>
+                                        purchaseID <span class="text-danger">*</span>
                                     </label>
 
-                                    <select name="puchaseID" class="form-select">
-                                        <option value="">Select PuchaseID </option>
+                                    <select name="purchaseID" class="form-select">
+                                        <option value="">Select purchaseID </option>
                                         @foreach ($purchases as $puchas)
-                                            <option value="{{ $puchas->id }}" @selected(old('puchasId',$puchaseDetail->puchaseID) == $puchas->id)>
+                                            <option value="{{ $puchas->id }}" @selected(old('puchasId',$purchaseDetail->purchaseID) == $puchas->id)>
                                                 {{ $puchas->id }}
                                             </option>
                                         @endforeach
                                     </select>
 
-                                    @error('puchaseID')
+                                    @error('purchaseID')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -53,7 +53,7 @@
                                     <select name="productID" class="form-select">
                                         <option value="">Select Product </option>
                                         @foreach ($products as $product)
-                                            <option value="{{ $product->id }}" @selected(old('productID',$puchaseDetail->puchaseID) == $product->id)>
+                                            <option value="{{ $product->id }}" @selected(old('productID',$purchaseDetail->purchaseID) == $product->id)>
                                                 {{ $product->id }}
                                             </option>
                                         @endforeach
@@ -72,7 +72,7 @@
                                     <input type="text"
                                         name="qty"
                                         class="form-control"
-                                        value="{{ old('qty',$puchaseDetail->puchaseID) }}">
+                                        value="{{ old('qty',$purchaseDetail->purchaseID) }}">
 
                                     @error('qty')
                                         <small class="text-danger">{{ $message }}</small>
@@ -87,7 +87,7 @@
                                     <input type="text"
                                         name="cost"
                                         class="form-control"
-                                        value="{{ old('cost',$puchaseDetail->cost) }}">
+                                        value="{{ old('cost',$purchaseDetail->cost) }}">
 
                                     @error('cost')
                                         <small class="text-danger">{{ $message }}</small>
@@ -102,11 +102,11 @@
                                     </label>
 
                                     <input type="number"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound',$puchaseDetail->discound) }}">
+                                        value="{{ old('discount',$purchaseDetail->discount) }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -136,3 +136,4 @@
         </div>
     </div>
 @endsection
+
