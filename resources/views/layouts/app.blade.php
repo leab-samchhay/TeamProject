@@ -137,7 +137,7 @@
                                 </li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{ route('permision.index') }}" class="side-nav-link">
+                                    <a href="{{ route('permission.index') }}" class="side-nav-link">
                                         <span class="menu-text">Permission</span>
                                     </a>
                                 </li>
@@ -162,19 +162,13 @@
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('purchase.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Puchase</span>
+                                        <span class="menu-text">Purchase</span>
                                     </a>
                                 </li>
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('purchaseDetail.index') }}" class="side-nav-link">
-                                        <span class="menu-text">PuchaseDetail</span>
-                                    </a>
-                                </li>
-
-                                <li class="side-nav-item">
-                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Sales</span>
+                                        <span class="menu-text">PurchaseDetail</span>
                                     </a>
                                 </li>
 
@@ -185,8 +179,8 @@
                                 </li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Payment_</span>
+                                    <a href="{{ route('purchasePayment.index') }}" class="side-nav-link">
+                                        <span class="menu-text">PurchasePayment</span>
                                     </a>
                                 </li>
 
@@ -1279,3 +1273,4 @@
 <!-- Mirrored from coderthemes.com/osen/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Dec 2025 02:31:09 GMT -->
 
 </html>
+
