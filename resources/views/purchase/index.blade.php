@@ -35,7 +35,7 @@
                                 @foreach ($rows as $row )
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $row->buillno }}</td>
+                                        <td>{{ $row->billno }}</td>
                                         <td>{{ \Carbon\Carbon::parse($row->puchaseDate)->format('d M Y') }}</td>
                                         <td>{{ $row->supplier->name ?? '-' }}</td>
                                         <td>{{ $row->user->name ?? '-' }}</td>
