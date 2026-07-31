@@ -163,7 +163,7 @@ class InvoiceController extends Controller
                 'ExchangeID'  => $request->ExchangeID,
                 'total'       => $totalAmount,
                 'invoiceDate' => now(),
-                'discound'    => 0,
+                'discount'    => 0,
                 'status'      => 1,
             ]);
 
@@ -185,7 +185,7 @@ class InvoiceController extends Controller
                     'price'     => $item['price'],
                     'cost'      => $product->cost ?? 0,
                     'totalPay'  => $subtotal,
-                    'discound'  => $item['discount'] ?? 0,
+                    'discount'  => $item['discount'] ?? 0,
                 ]);
 
                 // ដកចំនួនស្តុកចេញពី Column Qty_Onhand
@@ -223,7 +223,7 @@ class InvoiceController extends Controller
 
         $validate = $request->validate([
             'invoiceDate' => 'required|date',
-            'discound'    => 'required|integer',
+            'discount'    => 'required|integer',
             'total'       => 'required|numeric',
             'status'      => 'nullable|integer',
             'CustomerID'  => 'required|exists:customers,id',
