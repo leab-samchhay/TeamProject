@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create User')
+@section('title', 'Create Purchase')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -10,135 +10,132 @@
 
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h4 class="mb-0">
-                            <i class="ti ti-box me-2"></i>
-                            Create New User
+                            <i class="ti ti-user-shield me-2"></i>
+                            Create New Purchase
                         </h4>
 
-                        <a href="{{ route('user.index') }}" class="btn btn-light btn-sm">
+                        <a href="{{ route('purchase.index') }}" class="btn btn-light btn-sm">
                             <i class="ti ti-arrow-left"></i> Back
                         </a>
                     </div>
 
                     <div class="card-body p-4">
 
-                        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('purchase.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        User Name <span class="text-danger">*</span>
+                                        Bill No <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="text"
-                                        name="name"
+                                        name="buillno"
                                         class="form-control"
-                                        value="{{ old('name') }}">
+                                        value="{{ old('buillno') }}">
 
-                                    @error('name')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label fw-semibold">
-                                        Email <span class="text-danger">*</span>
-                                    </label>
-
-                                    <input type="email"
-                                        name="email"
-                                        class="form-control"
-                                        value="{{ old('email') }}">
-
-                                    @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label fw-semibold">
-                                        Password <span class="text-danger">*</span>
-                                    </label>
-
-                                    <input type="password"
-                                        name="password"
-                                        class="form-control"
-                                        value="{{ old('password') }}">
-
-                                    @error('password')
+                                    @error('buillno')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision <span class="text-danger">*</span>
-                                    </label>
-
-                                    <select name="permission_id" class="form-select">
-                                        <option value="">Select Permision</option>
-                                        @foreach ($permissions as $permision)
-                                            <option value="{{ $permision->id }}"
-                                                {{ old('permission_id') == $permision->id ? 'selected' : '' }}>
-                                                {{ $permision->permistionName }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('permission_id')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label fw-semibold">
-                                        Role <span class="text-danger">*</span>
-                                    </label>
-
-                                    <select name="role_id" class="form-select">
-                                        <option value="">Select Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}"
-                                                {{ old('role_id') == $role->id ? 'selected' : '' }}>
-                                                {{ $role->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
-                                    @error('role_id')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label fw-semibold">
-                                        Expired Date <span class="text-danger">*</span>
+                                        Purchase Date <span class="text-danger">*</span>
                                     </label>
 
                                     <input type="date"
-                                        name="expired"
+                                        name="puchaseDate"
                                         class="form-control"
-                                        value="{{ old('expired') }}">
+                                        value="{{ old('puchaseDate') }}">
 
-                                    @error('expired')
+                                    @error('puchaseDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        Supplier <span class="text-danger">*</span>
+                                    </label>
 
-                                <div class="mb-3 col-md-12">
+                                    <select name="supplierId" class="form-select">
+                                        <option value="">-- Select Supplier --</option>
+                                        @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}" @selected(old('supplierId') == $supplier->id)>
+                                                {{ $supplier->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('supplierId')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        User <span class="text-danger">*</span>
+                                    </label>
+
+                                    <select name="userId" class="form-select">
+                                        <option value="">-- Select User --</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}" @selected(old('userId') == $user->id)>
+                                                {{ $user->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('userId')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        Total Amount <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="number"
+                                        step="0.01"
+                                        name="totalAmount"
+                                        class="form-control"
+                                        value="{{ old('totalAmount') }}">
+
+                                    @error('totalAmount')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-semibold">
+                                        Discount <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="number"
+                                        name="discound"
+                                        class="form-control"
+                                        value="{{ old('discound') }}">
+
+                                    @error('discound')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 col-md-6">
                                     <label class="form-label fw-semibold">
                                         Status
                                     </label>
 
-                                    <select name="Status" class="form-select">
+                                    <select name="status" class="form-select">
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
                                 </div>
 
                             </div>
-
 
                             <div class="d-flex justify-content-end gap-2">
 
@@ -148,7 +145,7 @@
 
                                 <button type="submit" class="btn btn-primary">
                                     <i class="ti ti-device-floppy me-1"></i>
-                                    Save User
+                                    Save Purchase
                                 </button>
 
                             </div>
