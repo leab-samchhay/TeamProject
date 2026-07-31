@@ -18,6 +18,9 @@ use App\Http\Controllers\UserController;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PurchasePaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -139,5 +142,29 @@ Route:: delete('/purchaseDetail-remove/{id}',[PuchaseDetailController::class,'de
 
 
 Route::get('/Sale', [SalesController::class, 'index'])->name('sale.index');
-Route:: post('/customers-store',[CustomerController::class,'stores'])->name('customers.stores');
+Route::post('/customers-store', [CustomerController::class, 'stores'])->name('customers.stores');
+
+// Payment Method Routes
+Route::get('/paymentMethod', [PaymentMethodController::class, 'index'])->name('paymentMethod.index');
+Route::get('/paymentMethod-create', [PaymentMethodController::class, 'create'])->name('paymentMethod.create');
+Route::post('/paymentMethod-store', [PaymentMethodController::class, 'store'])->name('paymentMethod.store');
+Route::get('/paymentMethod-edit/{id}', [PaymentMethodController::class, 'edit'])->name('paymentMethod.edit');
+Route::put('/paymentMethod-update/{id}', [PaymentMethodController::class, 'update'])->name('paymentMethod.update');
+Route::delete('/paymentMethod-remove/{id}', [PaymentMethodController::class, 'destroy'])->name('paymentMethod.remove');
+
+// Payment Routes
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+Route::get('/payment-create', [PaymentController::class, 'create'])->name('payment.create');
+Route::post('/payment-store', [PaymentController::class, 'store'])->name('payment.store');
+Route::get('/payment-edit/{id}', [PaymentController::class, 'edit'])->name('payment.edit');
+Route::put('/payment-update/{id}', [PaymentController::class, 'update'])->name('payment.update');
+Route::delete('/payment-remove/{id}', [PaymentController::class, 'destroy'])->name('payment.remove');
+
+// Purchase Payment Routes
+Route::get('/purchasePayment', [PurchasePaymentController::class, 'index'])->name('purchasePayment.index');
+Route::get('/purchasePayment-create', [PurchasePaymentController::class, 'create'])->name('purchasePayment.create');
+Route::post('/purchasePayment-store', [PurchasePaymentController::class, 'store'])->name('purchasePayment.store');
+Route::get('/purchasePayment-edit/{id}', [PurchasePaymentController::class, 'edit'])->name('purchasePayment.edit');
+Route::put('/purchasePayment-update/{id}', [PurchasePaymentController::class, 'update'])->name('purchasePayment.update');
+Route::delete('/purchasePayment-remove/{id}', [PurchasePaymentController::class, 'destroy'])->name('purchasePayment.remove');
 
