@@ -47,7 +47,7 @@
                                         <td>{{ $row->email }} </td>
                                         <td>{{ \Illuminate\Support\Str::limit($row->password, 8, '...') }}</td>
                                         <td>{{ $row->role->name ?? '-' }} </td>
-                                        <td>{{ $row->permission->permistionName ?? '-' }} </td>
+                                        <td>{{ $row->permission->permissionName ?? '-' }} </td>
                                         <td>{{ $row->expired }} </td>
                                         <td class="text-center">
                                             @if($row->status == true)
