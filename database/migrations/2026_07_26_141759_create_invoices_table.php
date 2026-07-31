@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->date('invoiceDate')->nullable();
-            $table->integer('discound')->nullable();
+            $table->integer('discount')->nullable();
             $table->decimal('total',18,6)->nullable();
             $table->boolean('status')->default(true);
 
