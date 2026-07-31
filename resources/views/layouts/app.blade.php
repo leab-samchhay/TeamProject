@@ -178,7 +178,23 @@
                                     </a>
                                 </li>
 
+                                <li class="side-nav-item">
+                                    <a href="{{ route('payment.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Payment</span>
+                                    </a>
+                                </li>
 
+                                <li class="side-nav-item">
+                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Payment_</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Sales</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
