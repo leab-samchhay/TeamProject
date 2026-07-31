@@ -47,11 +47,11 @@
                                     </label>
 
                                     <input type="date"
-                                        name="puchaseDate"
+                                        name="purchaseDate"
                                         class="form-control"
-                                        value="{{ old('puchaseDate', \Carbon\Carbon::parse($purchase->puchaseDate)->format('Y-m-d')) }}">
+                                        value="{{ old('purchaseDate', \Carbon\Carbon::parse($purchase->purchaseDate)->format('Y-m-d')) }}">
 
-                                    @error('puchaseDate')
+                                    @error('purchaseDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -116,11 +116,11 @@
                                     </label>
 
                                     <input type="number"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound',$purchase->discound) }}">
+                                        value="{{ old('discount',$purchase->discount) }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -161,3 +161,4 @@
         </div>
     </div>
 @endsection
+
