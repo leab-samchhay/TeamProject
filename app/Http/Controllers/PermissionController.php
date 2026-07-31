@@ -30,14 +30,14 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'permistionName'=> 'required|string|min:2|max:50|unique:permissions,permistionName',
-            'permistionDate'=> 'required|date',
+            'permissionName'=> 'required|string|min:2|max:50|unique:permissions,permissionName',
+            'permissionDate'=> 'required|date',
             'status'=> 'nullable|integer'
         ]);
 
         Permission::create([
-            'permistionName' => $validate['permistionName'],
-            'permistionDate' => $validate['permistionDate'],
+            'permissionName' => $validate['permissionName'],
+            'permissionDate' => $validate['permissionDate'],
             'status' => $validate['status'] ?? 1 ,
         ]);
 
@@ -57,8 +57,8 @@ class PermissionController extends Controller
      */
     public function edit(int $id)
     {
-        $permision= Permission::findOrFail($id);
-        return view('permision.edit',compact('permision'));
+        $permission= Permission::findOrFail($id);
+        return view('permision.edit',compact('permission'));
     }
 
     /**
@@ -66,17 +66,17 @@ class PermissionController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $permistion = Permission::findOrFail($id);
+        $permission = Permission::findOrFail($id);
 
         $validate = $request->validate([
-            'permistionName'=> 'required|string|min:2|max:50',
-            'permistionDate'=> 'required|date',
+            'permissionName'=> 'required|string|min:2|max:50',
+            'permissionDate'=> 'required|date',
             'status'=> 'nullable|integer'
         ]);
 
-        $permistion->update([
-            'permistionName' => $validate['permistionName'],
-            'permistionDate' => $validate['permistionDate'],
+        $permission->update([
+            'permissionName' => $validate['permissionName'],
+            'permissionDate' => $validate['permissionDate'],
             'status' => $validate['status'] ?? 1 ,
         ]);
 
@@ -88,8 +88,8 @@ class PermissionController extends Controller
      */
     public function destroy(int $id)
     {
-        $permision = Permission:: findOrFail($id);
-        $permision->delete();
+        $permission = Permission:: findOrFail($id);
+        $permission->delete();
         return redirect()->route('permision.index')->with('success');
     }
 }
