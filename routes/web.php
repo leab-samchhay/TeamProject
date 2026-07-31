@@ -9,8 +9,8 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceDetailController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PuchaseController;
-use App\Http\Controllers\PuchaseDetailController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseDetailController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitypeController;
@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PuchasePaymentController;
+use App\Http\Controllers\PurchasePaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -97,12 +97,12 @@ Route:: get('/currency-edit/{id}',[CurrencyController::class,'edit'])->name('cur
 Route:: put('/currency-update/{id}',[CurrencyController::class,'update'])->name('currency.update');
 Route:: delete('/currency-remove/{id}',[CurrencyController::class,'destroy'])->name('currency.remove');
 
-Route:: get('/permision',[PermissionController::class,'index'])->name('permision.index');
-Route:: get('/permision-create',[PermissionController::class,'create'])->name('permision.create');
-Route:: post('/permision-store',[PermissionController::class,'store'])->name('permision.store');
-Route:: get('/permision-edit/{id}',[PermissionController::class,'edit'])->name('permision.edit');
-Route:: put('/permision-update/{id}',[PermissionController::class,'update'])->name('permision.update');
-Route:: delete('/permision-remove/{id}',[PermissionController::class,'destroy'])->name('permision.remove');
+Route:: get('/permission',[PermissionController::class,'index'])->name('permission.index');
+Route:: get('/permission-create',[PermissionController::class,'create'])->name('permission.create');
+Route:: post('/permission-store',[PermissionController::class,'store'])->name('permission.store');
+Route:: get('/permission-edit/{id}',[PermissionController::class,'edit'])->name('permission.edit');
+Route:: put('/permission-update/{id}',[PermissionController::class,'update'])->name('permission.update');
+Route:: delete('/permission-remove/{id}',[PermissionController::class,'destroy'])->name('permission.remove');
 
 Route:: get('/user',[UserController::class,'index'])->name('user.index');
 Route:: get('/user-create',[UserController::class,'create'])->name('user.create');
@@ -125,20 +125,19 @@ Route:: get('/invoiceDetail-edit/{id}',[InvoiceDetailController::class,'edit'])-
 Route:: put('/invoiceDetail-update/{id}',[InvoiceDetailController::class,'update'])->name('invoiceDetail.update');
 Route:: delete('/invoiceDetail-remove/{id}',[InvoiceDetailController::class,'destroy'])->name('invoiceDetail.remove');
 
-Route:: get('/purchase',[PuchaseController::class,'index'])->name('purchase.index');
-Route:: get('/purchase-create',[PuchaseController::class,'create'])->name('purchase.create');
-Route:: post('/purchase-store',[PuchaseController::class,'store'])->name('purchase.store');
-Route:: get('/purchase-edit/{id}',[PuchaseController::class,'edit'])->name('purchase.edit');
-Route:: put('/purchase-update/{id}',[PuchaseController::class,'update'])->name('purchase.update');
-Route:: delete('/purchase-remove/{id}',[PuchaseController::class,'destroy'])->name('purchase.remove');
+Route:: get('/purchase',[PurchaseController::class,'index'])->name('purchase.index');
+Route:: get('/purchase-create',[PurchaseController::class,'create'])->name('purchase.create');
+Route:: post('/purchase-store',[PurchaseController::class,'store'])->name('purchase.store');
+Route:: get('/purchase-edit/{id}',[PurchaseController::class,'edit'])->name('purchase.edit');
+Route:: put('/purchase-update/{id}',[PurchaseController::class,'update'])->name('purchase.update');
+Route:: delete('/purchase-remove/{id}',[PurchaseController::class,'destroy'])->name('purchase.remove');
 
-Route:: get('/purchaseDetail',[PuchaseDetailController::class,'index'])->name('purchaseDetail.index');
-Route:: get('/purchaseDetail-create',[PuchaseDetailController::class,'create'])->name('purchaseDetail.create');
-Route:: post('/purchaseDetail-store',[PuchaseDetailController::class,'store'])->name('purchaseDetail.store');
-Route:: get('/purchaseDetail-edit/{id}',[PuchaseDetailController::class,'edit'])->name('purchaseDetail.edit');
-Route:: put('/purchaseDetail-update/{id}',[PuchaseDetailController::class,'update'])->name('purchaseDetail.update');
-Route:: delete('/purchaseDetail-remove/{id}',[PuchaseDetailController::class,'destroy'])->name('purchaseDetail.remove');
-
+Route:: get('/purchaseDetail',[PurchaseDetailController::class,'index'])->name('purchaseDetail.index');
+Route:: get('/purchaseDetail-create',[PurchaseDetailController::class,'create'])->name('purchaseDetail.create');
+Route:: post('/purchaseDetail-store',[PurchaseDetailController::class,'store'])->name('purchaseDetail.store');
+Route:: get('/purchaseDetail-edit/{id}',[PurchaseDetailController::class,'edit'])->name('purchaseDetail.edit');
+Route:: put('/purchaseDetail-update/{id}',[PurchaseDetailController::class,'update'])->name('purchaseDetail.update');
+Route:: delete('/purchaseDetail-remove/{id}',[PurchaseDetailController::class,'destroy'])->name('purchaseDetail.remove');
 
 
 Route::get('/Sale', [SalesController::class, 'index'])->name('sale.index');
@@ -161,10 +160,10 @@ Route::put('/payment-update/{id}', [PaymentController::class, 'update'])->name('
 Route::delete('/payment-remove/{id}', [PaymentController::class, 'destroy'])->name('payment.remove');
 
 // Purchase Payment Routes
-Route::get('/puchasePayment', [PuchasePaymentController::class, 'index'])->name('puchasePayment.index');
-Route::get('/puchasePayment-create', [PuchasePaymentController::class, 'create'])->name('puchasePayment.create');
-Route::post('/puchasePayment-store', [PuchasePaymentController::class, 'store'])->name('puchasePayment.store');
-Route::get('/puchasePayment-edit/{id}', [PuchasePaymentController::class, 'edit'])->name('puchasePayment.edit');
-Route::put('/puchasePayment-update/{id}', [PuchasePaymentController::class, 'update'])->name('puchasePayment.update');
-Route::delete('/puchasePayment-remove/{id}', [PuchasePaymentController::class, 'destroy'])->name('puchasePayment.remove');
+Route::get('/purchasePayment', [PurchasePaymentController::class, 'index'])->name('purchasePayment.index');
+Route::get('/purchasePayment-create', [PurchasePaymentController::class, 'create'])->name('purchasePayment.create');
+Route::post('/purchasePayment-store', [PurchasePaymentController::class, 'store'])->name('purchasePayment.store');
+Route::get('/purchasePayment-edit/{id}', [PurchasePaymentController::class, 'edit'])->name('purchasePayment.edit');
+Route::put('/purchasePayment-update/{id}', [PurchasePaymentController::class, 'update'])->name('purchasePayment.update');
+Route::delete('/purchasePayment-remove/{id}', [PurchasePaymentController::class, 'destroy'])->name('purchasePayment.remove');
 
