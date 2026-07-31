@@ -33,11 +33,11 @@
                                 @foreach ($rows as $row )
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $row->puchase->billno ?? '-' }}</td>
+                                        <td>{{ $row->purchase->billno ?? '-' }}</td>
                                         <td>{{ $row->productID ?? '-' }}</td>
                                         <td>{{ $row->qty ?? '-' }}</td>
                                         <td>{{ $row->cost ?? '-' }}</td>
-                                        <td>{{ $row->discound ?? '-' }}</td>
+                                        <td>{{ $row->discount ?? '-' }}</td>
                                         <td>
                                             @if($row->status == true)
                                                 <button class="btn btn-sm text-white bg-success">
@@ -89,3 +89,4 @@
         </div>
     </div>
 @endsection
+
