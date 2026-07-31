@@ -72,15 +72,15 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Permision <span class="text-danger">*</span>
+                                        Permission <span class="text-danger">*</span>
                                     </label>
 
                                     <select name="permission_id" class="form-select">
-                                        <option value="">Select Permision</option>
+                                        <option value="">Select Permission</option>
                                         @foreach ($permissions as $permision)
                                             <option value="{{ $permision->id }}"
                                                 {{ old('permission_id') == $permision->id ? 'selected' : '' }}>
-                                                {{ $permision->permistionName }}
+                                                {{ $permision->permissionName }}
                                             </option>
                                         @endforeach
                                     </select>
