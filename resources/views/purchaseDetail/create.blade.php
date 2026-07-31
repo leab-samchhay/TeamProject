@@ -34,7 +34,7 @@
                                         <option value="">Select PuchaseID </option>
                                         @foreach ($puchase as $puchas)
                                             <option value="{{ $puchas->id }}" @selected(old('puchaseId') == $puchas->id)>
-                                                {{ $puchas->buillno }}
+                                                {{ $puchas->billno }}
                                             </option>
                                         @endforeach
                                     </select>
