@@ -46,11 +46,11 @@
                                     </label>
 
                                     <input type="date"
-                                        name="puchaseDate"
+                                        name="purchaseDate"
                                         class="form-control"
-                                        value="{{ old('puchaseDate') }}">
+                                        value="{{ old('purchaseDate') }}">
 
-                                    @error('puchaseDate')
+                                    @error('purchaseDate')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -115,11 +115,11 @@
                                     </label>
 
                                     <input type="number"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound') }}">
+                                        value="{{ old('discount') }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -159,3 +159,4 @@
         </div>
     </div>
 @endsection
+
