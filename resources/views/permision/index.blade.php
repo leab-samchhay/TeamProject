@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Permistion')
+@section('title', 'Permission')
 
 @section('content')
     <div class="row my-2">
