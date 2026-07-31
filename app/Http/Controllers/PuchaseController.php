@@ -38,7 +38,7 @@ class PuchaseController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'buillno'     => 'required|string|max:255',
+            'billno'     => 'required|string|max:255',
             'puchaseDate' => 'required|date',
             'discound'    => 'required|integer',
             'totalAmount' => 'required|numeric',
@@ -80,7 +80,7 @@ class PuchaseController extends Controller
         $purchase = Purchase::findOrFail($id);
 
         $validate = $request->validate([
-            'buillno'     => 'required|string|max:255',
+            'billno'     => 'required|string|max:255',
             'puchaseDate' => 'required|date',
             'discound'    => 'required|numeric',
             'totalAmount' => 'required|numeric',
