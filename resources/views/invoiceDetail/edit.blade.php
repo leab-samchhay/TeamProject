@@ -124,15 +124,15 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label fw-semibold">
-                                        Discound<span class="text-danger">*</span>
+                                        discount<span class="text-danger">*</span>
                                     </label>
 
                                     <input type="text"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound', $invoiceDetail->discound) }}">
+                                        value="{{ old('discount', $invoiceDetail->discount) }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -164,3 +164,4 @@
         </div>
     </div>
 @endsection
+
