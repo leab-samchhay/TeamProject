@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('price',18,6)->nullable();
             $table->decimal('cost',18,6)->nullable();
             $table->decimal('totalPay',18,6)->nullable();
-            $table->integer('discound');
+            $table->integer('discount')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
