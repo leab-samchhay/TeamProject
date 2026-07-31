@@ -31,11 +31,11 @@
                                     </label>
 
                                     <input type="text"
-                                        name="buillno"
+                                        name="billno"
                                         class="form-control"
-                                        value="{{ old('buillno') }}">
+                                        value="{{ old('billno') }}">
 
-                                    @error('buillno')
+                                    @error('billno')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
