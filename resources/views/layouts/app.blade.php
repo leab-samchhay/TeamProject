@@ -154,9 +154,27 @@
                                     </a>
                                 </li>
 
-                              <li class="side-nav-item">
+                                <li class="side-nav-item">
                                     <a href="{{ route('invoiceDetail.index') }}" class="side-nav-link">
                                         <span class="menu-text">InvoiceDetail</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('purchase.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Puchase</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('purchaseDetail.index') }}" class="side-nav-link">
+                                        <span class="menu-text">PuchaseDetail</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Sales</span>
                                     </a>
                                 </li>
 
@@ -1225,6 +1243,7 @@
         </div>
 
     </div>
+    @stack('scripts')
 
     <!-- Vendor js -->
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
