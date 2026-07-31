@@ -46,7 +46,7 @@
                                 </th>
 
                                 <th>
-                                    Discound
+                                    discount
                                 </th>
 
                                 <th>
@@ -84,7 +84,7 @@
                                             {{ $row->exchange->toCurrency->currencycode ?? '-' }}
                                         </td>
                                         <td>
-                                            {{ $row->discound }}
+                                            {{ $row->discount }}
                                         </td>
                                         <td>
                                             {{ $row->total }}
@@ -135,3 +135,4 @@
         </div>
     </div>
 @endsection
+
