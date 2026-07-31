@@ -77,10 +77,10 @@
 
                                     <select name="permission_id" class="form-select">
                                         <option value="">Select Permission</option>
-                                        @foreach ($permissions as $permision)
-                                            <option value="{{ $permision->id }}"
-                                                {{ old('permission_id') == $permision->id ? 'selected' : '' }}>
-                                                {{ $permision->permissionName }}
+                                        @foreach ($permissions as $permission)
+                                            <option value="{{ $permission->id }}"
+                                                {{ old('permission_id') == $permission->id ? 'selected' : '' }}>
+                                                {{ $permission->permissionName }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -162,3 +162,4 @@
         </div>
     </div>
 @endsection
+
