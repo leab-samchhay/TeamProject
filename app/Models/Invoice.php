@@ -76,6 +76,11 @@ class Invoice extends Model
         return $this->belongsTo(Exchange::class, 'ExchangeID');
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'InvoiceID');
+    }
+
     /*
     // Example: If an invoice has line items
     public function items()
