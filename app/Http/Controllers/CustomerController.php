@@ -30,9 +30,9 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name'=> 'required|string|min:2|max:50|unique:customers,name',
+            'name'=> 'required|string|min:2|max:50',
             'sex'=> 'required|string|min:1|max:10',
-            'phone'=> 'required|string|min:5|max:20',
+            'phone'=> 'nullable|string',
             'status'=> 'nullable|integer'
         ]);
 
@@ -43,7 +43,30 @@ class CustomerController extends Controller
             'status' => $validate['status'] ?? 1 ,
         ]);
 
+
+
         return redirect()->route('customer.index')->with('success');
+    }
+
+    public function stores(Request $request)
+    {
+        $validate = $request->validate([
+            'name'=> 'required|string|min:2|max:50',
+            'sex'=> 'required|string|min:1|max:10',
+            'phone'=> 'nullable|string',
+            'status'=> 'nullable|integer'
+        ]);
+
+        Customer::create([
+            'name' => $validate['name'],
+            'sex' => $validate['sex'],
+            'phone' => $validate['phone'],
+            'status' => $validate['status'] ?? 1 ,
+        ]);
+
+
+
+        return redirect()->route('sale.index')->with('success');
     }
 
     /**
@@ -73,7 +96,7 @@ class CustomerController extends Controller
         $validate = $request->validate([
             'name'=> 'required|string|min:2|max:50',
             'sex'=> 'required|string|min:1|max:10',
-            'phone'=> 'required|string|min:5|max:20',
+            'phone'=> 'nullable|string',
             'status'=> 'nullable|integer'
         ]);
 
