@@ -185,8 +185,8 @@
                                 </li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Sales</span>
+                                    <a href="{{ route('paymentMethod.index') }}" class="side-nav-link">
+                                        <span class="menu-text">PaymentMethod</span>
                                     </a>
                                 </li>
                             </ul>
