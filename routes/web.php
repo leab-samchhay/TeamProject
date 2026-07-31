@@ -9,12 +9,15 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoiceDetailController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PuchaseController;
+use App\Http\Controllers\PuchaseDetailController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitypeController;
 use App\Http\Controllers\UserController;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -118,3 +121,23 @@ Route:: post('/invoiceDetail-store',[InvoiceDetailController::class,'store'])->n
 Route:: get('/invoiceDetail-edit/{id}',[InvoiceDetailController::class,'edit'])->name('invoiceDetail.edit');
 Route:: put('/invoiceDetail-update/{id}',[InvoiceDetailController::class,'update'])->name('invoiceDetail.update');
 Route:: delete('/invoiceDetail-remove/{id}',[InvoiceDetailController::class,'destroy'])->name('invoiceDetail.remove');
+
+Route:: get('/purchase',[PuchaseController::class,'index'])->name('purchase.index');
+Route:: get('/purchase-create',[PuchaseController::class,'create'])->name('purchase.create');
+Route:: post('/purchase-store',[PuchaseController::class,'store'])->name('purchase.store');
+Route:: get('/purchase-edit/{id}',[PuchaseController::class,'edit'])->name('purchase.edit');
+Route:: put('/purchase-update/{id}',[PuchaseController::class,'update'])->name('purchase.update');
+Route:: delete('/purchase-remove/{id}',[PuchaseController::class,'destroy'])->name('purchase.remove');
+
+Route:: get('/purchaseDetail',[PuchaseDetailController::class,'index'])->name('purchaseDetail.index');
+Route:: get('/purchaseDetail-create',[PuchaseDetailController::class,'create'])->name('purchaseDetail.create');
+Route:: post('/purchaseDetail-store',[PuchaseDetailController::class,'store'])->name('purchaseDetail.store');
+Route:: get('/purchaseDetail-edit/{id}',[PuchaseDetailController::class,'edit'])->name('purchaseDetail.edit');
+Route:: put('/purchaseDetail-update/{id}',[PuchaseDetailController::class,'update'])->name('purchaseDetail.update');
+Route:: delete('/purchaseDetail-remove/{id}',[PuchaseDetailController::class,'destroy'])->name('purchaseDetail.remove');
+
+
+
+Route::get('/Sale', [SalesController::class, 'index'])->name('sale.index');
+Route:: post('/customers-store',[CustomerController::class,'stores'])->name('customers.stores');
+
