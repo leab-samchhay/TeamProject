@@ -54,7 +54,7 @@
                                 </th>
 
                                 <th>
-                                    Discound
+                                    discount
                                 </th>
 
                                 <th class="text-center" style="width:125px;">
@@ -92,7 +92,7 @@
                                         </td>
 
                                         <td>
-                                            {{ $row->discound ?? '-' }}
+                                            {{ $row->discount ?? '-' }}
                                         </td>
 
                                         <td>
@@ -129,3 +129,4 @@
         </div>
     </div>
 @endsection
+
