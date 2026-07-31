@@ -66,17 +66,9 @@ class DatabaseSeeder extends Seeder
             'description' => 'Manage All',
         ]);
 
-        Permission::create([
-            'permistionName' => 'all',
-            'permistionDate' => now(),
-        ]);
-
-        User::create([
-            'role_id' => 1,
-            'permission_id' => 1,
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345678'),
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
         ]);
     }
 }
