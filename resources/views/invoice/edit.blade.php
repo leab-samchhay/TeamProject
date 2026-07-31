@@ -47,11 +47,11 @@
                                     </label>
 
                                     <input type="number"
-                                        name="discound"
+                                        name="discount"
                                         class="form-control"
-                                        value="{{ old('discound', $invoice->discound) }}">
+                                        value="{{ old('discount', $invoice->discount) }}">
 
-                                    @error('discound')
+                                    @error('discount')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -169,3 +169,4 @@
         </div>
     </div>
 @endsection
+
