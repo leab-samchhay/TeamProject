@@ -138,7 +138,7 @@
 
                                 <li class="side-nav-item">
                                     <a href="{{ route('permision.index') }}" class="side-nav-link">
-                                        <span class="menu-text">Permistion</span>
+                                        <span class="menu-text">Permission</span>
                                     </a>
                                 </li>
 
