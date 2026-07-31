@@ -33,7 +33,7 @@
                                 @foreach ($rows as $row )
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td>{{ $row->buillno ?? '-' }}</td>
+                                        <td>{{ $row->puchase->billno ?? '-' }}</td>
                                         <td>{{ $row->productID ?? '-' }}</td>
                                         <td>{{ $row->qty ?? '-' }}</td>
                                         <td>{{ $row->cost ?? '-' }}</td>
