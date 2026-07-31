@@ -9,5 +9,5 @@ class Permission extends Model
 {
     use SoftDeletes;
     protected $table = 'permissions';
-    protected $fillable = ['permistionName','permistionDate','status'];
+    protected $fillable = ['permissionName','permissionDate','status'];
 }
