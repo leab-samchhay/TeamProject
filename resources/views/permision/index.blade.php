@@ -8,11 +8,11 @@
             <div class="card">
 
                 <div class="card-header d-flex align-items-center justify-content-between border-bottom border-light">
-                    <h4 class="header-title">Manage Permistion</h4>
+                    <h4 class="header-title">Manage Permission</h4>
 
                     <div>
                         <a href="{{ route('permision.create') }}" class="btn btn-success bg-gradient">
-                            <i class="ti ti-plus me-1"></i> Add Permistion
+                            <i class="ti ti-plus me-1"></i> Add Permission
                         </a>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                                 </th>
 
                                 <th style="width:250px;">
-                                    Name Permision
+                                    Name Permission
                                 </th>
 
                                 <th>
@@ -54,10 +54,10 @@
                                             {{ $loop->iteration }}
                                         </td>
                                         <td>
-                                            {{ $row->permistionName }}
+                                            {{ $row->permissionName }}
                                         </td>
                                         <td>
-                                            {{ $row->permistionDate }}
+                                            {{ $row->permissionDate }}
                                         </td>
                                         <td class="text-center">
                                             @if($row->status == true)
