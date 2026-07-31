@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PurchasePaymentController;
+use App\Http\Controllers\PuchasePaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -161,10 +161,10 @@ Route::put('/payment-update/{id}', [PaymentController::class, 'update'])->name('
 Route::delete('/payment-remove/{id}', [PaymentController::class, 'destroy'])->name('payment.remove');
 
 // Purchase Payment Routes
-Route::get('/purchasePayment', [PurchasePaymentController::class, 'index'])->name('purchasePayment.index');
-Route::get('/purchasePayment-create', [PurchasePaymentController::class, 'create'])->name('purchasePayment.create');
-Route::post('/purchasePayment-store', [PurchasePaymentController::class, 'store'])->name('purchasePayment.store');
-Route::get('/purchasePayment-edit/{id}', [PurchasePaymentController::class, 'edit'])->name('purchasePayment.edit');
-Route::put('/purchasePayment-update/{id}', [PurchasePaymentController::class, 'update'])->name('purchasePayment.update');
-Route::delete('/purchasePayment-remove/{id}', [PurchasePaymentController::class, 'destroy'])->name('purchasePayment.remove');
+Route::get('/puchasePayment', [PuchasePaymentController::class, 'index'])->name('puchasePayment.index');
+Route::get('/puchasePayment-create', [PuchasePaymentController::class, 'create'])->name('puchasePayment.create');
+Route::post('/puchasePayment-store', [PuchasePaymentController::class, 'store'])->name('puchasePayment.store');
+Route::get('/puchasePayment-edit/{id}', [PuchasePaymentController::class, 'edit'])->name('puchasePayment.edit');
+Route::put('/puchasePayment-update/{id}', [PuchasePaymentController::class, 'update'])->name('puchasePayment.update');
+Route::delete('/puchasePayment-remove/{id}', [PuchasePaymentController::class, 'destroy'])->name('puchasePayment.remove');
 
