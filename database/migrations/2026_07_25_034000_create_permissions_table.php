@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('permistionName',50)->nullable();
-            $table->date('permistionDate')->nullable();
+            $table->string('permissionName',50)->nullable();
+            $table->date('permissionDate')->nullable();
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();
