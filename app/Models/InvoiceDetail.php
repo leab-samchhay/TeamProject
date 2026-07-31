@@ -44,7 +44,7 @@ class InvoiceDetail extends Model
         'price',
         'cost',
         'totalPay',
-        'discound', // Fixed potential typo from 'discound'
+        'discount',
     ];
 
     /**
@@ -55,7 +55,7 @@ class InvoiceDetail extends Model
         'price'    => 'float',
         'cost'     => 'float',
         'totalPay' => 'float',
-        'discound' => 'float',
+        'discount' => 'float',
     ];
 
     // --- Relationships ---
