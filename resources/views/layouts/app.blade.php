@@ -269,9 +269,10 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="kh">
                                     <img src="{{ asset('assets/images/flags/khmer.jpg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18"> <span class="align-middle">Cambodia</span>
+                                        height="18" data-translator-image> <span
+                                        class="align-middle">Cambodia</span>
                                 </a>
 
                             </div>
