@@ -269,33 +269,9 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="hi">
-                                    <img src="{{ asset('assets/images/flags/in.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18" data-translator-image> <span class="align-middle">Hindi</span>
-                                </a>
-
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{ asset('assets/images/flags/de.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18"> <span class="align-middle">German</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{ asset('assets/images/flags/it.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18"> <span class="align-middle">Italian</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{ asset('assets/images/flags/es.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18"> <span class="align-middle">Spanish</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{ asset('assets/images/flags/ru.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18"> <span class="align-middle">Russian</span>
+                                    <img src="{{ asset('assets/images/flags/khmer.jpg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18"> <span class="align-middle">Cambodia</span>
                                 </a>
 
                             </div>
