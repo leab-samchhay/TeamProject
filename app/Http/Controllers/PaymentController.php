@@ -31,12 +31,16 @@ class PaymentController extends Controller
             'PaymentDate' => 'required|date',
         ]);
 
-        Payment::create([
+        $payment = Payment::create([
             'MethodID' => $validate['MethodID'],
             'InvoiceID' => $validate['InvoiceID'],
             'TotalPayment' => $validate['TotalPayment'],
             'PaymentDate' => $validate['PaymentDate'],
         ]);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['success' => true, 'payment_id' => $payment->id]);
+        }
 
         return redirect()->route('payment.index')->with('success', 'Payment recorded successfully.');
     }

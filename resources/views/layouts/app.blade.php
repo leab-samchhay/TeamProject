@@ -189,6 +189,12 @@
                                         <span class="menu-text">PaymentMethod</span>
                                     </a>
                                 </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('sale.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Sale</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -256,23 +262,46 @@
                         <div class="dropdown">
                             <button class="topbar-link" data-bs-toggle="dropdown" data-bs-offset="0,25"
                                 type="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image" class="w-100 rounded"
-                                    height="18" id="selected-language-image">
+                                <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image"
+                                    class="w-100 rounded" height="18" id="selected-language-image">
                             </button>
 
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="en">
-                                    <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18" data-translator-image> <span
+                                    <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image"
+                                        class="me-1 rounded" height="18" data-translator-image> <span
                                         class="align-middle">English</span>
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="kh">
-                                    <img src="{{ asset('assets/images/flags/khmer.jpg') }}" alt="user-image" class="me-1 rounded"
-                                        height="18" data-translator-image> <span
-                                        class="align-middle">Cambodia</span>
+                                <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="hi">
+                                    <img src="{{ asset('assets/images/flags/in.svg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18" data-translator-image> <span class="align-middle">Hindi</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <img src="{{ asset('assets/images/flags/de.svg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18"> <span class="align-middle">German</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <img src="{{ asset('assets/images/flags/it.svg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18"> <span class="align-middle">Italian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <img src="{{ asset('assets/images/flags/es.svg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18"> <span class="align-middle">Spanish</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <img src="{{ asset('assets/images/flags/ru.svg') }}" alt="user-image" class="me-1 rounded"
+                                        height="18"> <span class="align-middle">Russian</span>
                                 </a>
 
                             </div>
@@ -582,10 +611,16 @@
                                 data-bs-offset="0,19" type="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" width="32"
                                     class="rounded-circle me-lg-2 d-flex" alt="user-image">
-                                <span class="d-lg-flex flex-column gap-1 d-none">
-                                    <h5 class="my-0">Dhanoo K.</h5>
-                                    <h6 class="my-0 fw-normal">Premium</h6>
-                                </span>
+                                @auth
+                                    <span class="d-lg-flex flex-column gap-1 d-none">
+                                        <h5 class="my-0">{{ Auth::user()->name }}</h5>
+                                        <h6 class="my-0 fw-normal">{{ Auth::user()->email }}</h6>
+                                    </span>
+                                @else
+                                    <span class="d-lg-flex flex-column gap-1 d-none">
+                                        <h5 class="my-0">Guest</h5>
+                                    </span>
+                                @endauth
                                 <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -635,7 +670,8 @@
                                     <span class="align-middle">Sign Out</span>
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
 
@@ -1153,4 +1189,3 @@
 <!-- Mirrored from coderthemes.com/osen/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Dec 2025 02:31:09 GMT -->
 
 </html>
-

@@ -30,14 +30,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name'=> 'required|string|min:2|max:50',
-            'sex'=> 'required|string|min:1|max:10',
+            'name'=> 'nullable|string',
+            'sex'=> 'nullable|string|min:1|max:10',
             'phone'=> 'nullable|string',
             'status'=> 'nullable|integer'
         ]);
 
         Customer::create([
-            'name' => $validate['name'],
+            'name' => $validate['name'] ?? "general",
             'sex' => $validate['sex'],
             'phone' => $validate['phone'],
             'status' => $validate['status'] ?? 1 ,

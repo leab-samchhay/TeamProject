@@ -101,6 +101,8 @@ use App\Models\Product;
 use App\Models\Customer;
 use App\Models\User;
 use App\Models\Exchange;
+use App\Models\PurchaseDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
@@ -130,8 +132,7 @@ class InvoiceController extends Controller
     {
         // 1. Validation ពិនិត្យមើលទិន្នន័យដែលផ្ញើមកឱ្យបានត្រឹមត្រូវ
         $request->validate([
-            'CustomerID'         => 'required|exists:customers,id',
-            'UserID'             => 'required|exists:users,id',
+            'discount'           => 'nullable|numeric|min:0',
             'ExchangeID'         => 'required|exists:exchanges,id',
             'items'              => 'required|array|min:1',
             'items.*.product_id' => 'required|exists:products,id',
@@ -139,69 +140,95 @@ class InvoiceController extends Controller
             'items.*.price'      => 'required|numeric',
         ], [
             'items.required'      => 'សូមជ្រើសរើសទំនិញចូល Cart ជាមុនសិន!',
-            'CustomerID.required' => 'សូមជ្រើសរើសអតិថិជន!',
-            'UserID.required'     => 'សូមជ្រើសរើសអ្នកគិតលុយ!',
             'ExchangeID.required' => 'សូមជ្រើសរើសអត្រាប្តូរប្រាក់ (Exchange)!'
         ]);
 
         DB::beginTransaction();
 
         try {
-            // 2. គណនាសរុបទឹកប្រាក់ (Total Amount)
-            $totalAmount = 0;
+            $discount    = max(0, floatval($request->discount ?? 0));
+            $subtotal    = 0;
+            $userId      = Auth::id();
+            $exchangeId  = $request->ExchangeID;
+
             foreach ($request->items as $item) {
-                $totalAmount += $item['price'] * $item['quantity'];
+                $subtotal += $item['price'] * $item['quantity'];
             }
 
-            // យក ExchangeID ដែលមានស្រាប់ក្នុង DB ប្រសិនបើ Form មិនបានផ្ញើមក
-            // $exchangeId = $request->ExchangeID ?? Exchange::value('id') ?? 1;
+            $totalAmount = max(0, $subtotal - $discount);
 
-            // 3. រក្សាទុកក្នុង Table `invoices`
+            $customer = Customer::create([
+                'name'   => 'general',
+                'sex'    => 'N/A',
+                'phone'  => null,
+                'status' => 1,
+            ]);
+
             $invoice = Invoice::create([
-                'CustomerID'  => $request->CustomerID,
-                'UserID'      => $request->UserID,
-                'ExchangeID'  => $request->ExchangeID,
+                'CustomerID'  => $customer->id,
+                'UserID'      => $userId,
+                'ExchangeID'  => $exchangeId,
                 'total'       => $totalAmount,
                 'invoiceDate' => now(),
-                'discount'    => 0,
+                'discount'    => $discount,
                 'status'      => 1,
             ]);
 
-            // 4. រក្សាទុកក្នុង Table `invoice_details`
             foreach ($request->items as $item) {
                 $product = Product::find($item['product_id']);
 
-                // ពិនិត្យមើលថាតើស្តុកមានគ្រប់គ្រាន់សម្រាប់លក់ដែរឬទេ
-                if ($product && $product->Qty_Onhand < $item['quantity']) {
+                if (!$product) {
+                    throw new Exception('Product not found.');
+                }
+
+                if ($product->Qty_Onhand < $item['quantity']) {
                     throw new Exception("ទំនិញ '" . ($product->ProNameKh ?? $product->ProName) . "' មិនមានស្តុកគ្រប់គ្រាន់ទេ! (នៅសល់ក្នុងស្តុក: " . $product->Qty_Onhand . ")");
                 }
 
-                $subtotal = $item['price'] * $item['quantity'];
+                $purchaseCost = PurchaseDetail::where('productID', $product->id)
+                    ->orderByDesc('created_at')
+                    ->value('cost') ?? 0;
+
+                $subtotalItem = $item['price'] * $item['quantity'];
 
                 InvoiceDetail::create([
                     'InvoiceID' => $invoice->id,
-                    'ProductID' => $item['product_id'],
+                    'ProductID' => $product->id,
                     'qty'       => $item['quantity'],
                     'price'     => $item['price'],
-                    'cost'      => $product->cost ?? 0,
-                    'totalPay'  => $subtotal,
-                    'discount'  => $item['discount'] ?? 0,
+                    'cost'      => $purchaseCost,
+                    'totalPay'  => $subtotalItem,
+                    'discount'  => 0,
                 ]);
 
-                // ដកចំនួនស្តុកចេញពី Column Qty_Onhand
-                if ($product && isset($product->Qty_Onhand)) {
-                    $product->decrement('Qty_Onhand', $item['quantity']);
-                }
+                $product->decrement('Qty_Onhand', $item['quantity']);
             }
 
             DB::commit();
 
-            return redirect()->route('sale.index')->with('success', 'រក្សាទុកការលក់ (Invoice) បានជោគជ័យ!');
+            if ($request->ajax() || $request->wantsJson()) {
+                $exchange = Exchange::find($exchangeId);
+                $rate = $exchange->rate ?? null;
 
+                return response()->json([
+                    'success' => true,
+                    'invoice_id' => $invoice->id,
+                    'subtotal' => round($subtotal, 2),
+                    'discount' => round($discount, 2),
+                    'total' => round($totalAmount, 2),
+                    'exchange_rate' => $rate,
+                ]);
+            }
+
+            return redirect()->route('sale.index')->with('success', 'រក្សាទុកការលក់ (Invoice) បានជោគជ័យ!');
         } catch (Exception $e) {
             DB::rollBack();
 
-            return redirect()->back()->with('error', 'មានបញ្ហាក្នុងការរក្សាទុកទិន្នន័យ៖ ' . $e->getMessage());
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            }
+
+            return redirect()->back()->with('error', 'មានបញ្ហាក្នុងការរក្សាទិន្នន័យ៖ ' . $e->getMessage());
         }
     }
 
