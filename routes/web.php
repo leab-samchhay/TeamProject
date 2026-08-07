@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AttributesController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CurrencyController;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\PurchasePaymentController;
 
 Route::get('/', function () {
@@ -182,3 +185,11 @@ Route::get('/purchasePayment-edit/{id}', [PurchasePaymentController::class, 'edi
 Route::put('/purchasePayment-update/{id}', [PurchasePaymentController::class, 'update'])->name('purchasePayment.update');
 Route::delete('/purchasePayment-remove/{id}', [PurchasePaymentController::class, 'destroy'])->name('purchasePayment.remove');
 
+Route:: get('/attributes',[AttributesController::class,'index'])->name('attributes.index');
+Route:: get('/attributes-create',[AttributesController::class,'create'])->name('attributes.create');
+Route:: post('/attributes-store',[AttributesController::class,'store'])->name('attributes.store');
+Route:: get('/attributes-edit/{id}',[AttributesController::class,'edit'])->name('attributes.edit');
+Route:: put('/attributes-update/{id}',[AttributesController::class,'update'])->name('attributes.update');
+Route:: delete('/attributes-remove/{id}',[AttributesController::class,'destroy'])->name('attributes.destroy');
+
+Route::resource('product-variants',ProductVariantController::class);

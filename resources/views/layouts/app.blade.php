@@ -195,6 +195,19 @@
                                         <span class="menu-text">Sale</span>
                                     </a>
                                 </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('attributes.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Attributes</span>
+                                    </a>
+                                </li>
+
+                                <li class="side-nav-item">
+                                    <a href="{{ route('product-variants.index') }}" class="side-nav-link">
+                                        <span class="menu-text">Product Variants</span>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </li>

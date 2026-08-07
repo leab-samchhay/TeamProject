@@ -70,4 +70,16 @@ class RegisterController extends Controller
             'status'        => 1,
         ]);
     }
+
+    /**
+     * Handle post-registration response (after successful registration).
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    protected function registered($request, $user)
+    {
+        return redirect($this->redirectPath())->with('success', 'Registration successful!');
+    }
 }
